@@ -1,0 +1,131 @@
+{
+  "runSettings": {
+    "temperature": 1.0,
+    "model": "models/gemini-3.1-flash-lite",
+    "topP": 0.95,
+    "topK": 64,
+    "maxOutputTokens": 65536,
+    "safetySettings": [{
+      "category": "HARM_CATEGORY_HARASSMENT",
+      "threshold": "OFF"
+    }, {
+      "category": "HARM_CATEGORY_HATE_SPEECH",
+      "threshold": "OFF"
+    }, {
+      "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+      "threshold": "OFF"
+    }, {
+      "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+      "threshold": "OFF"
+    }],
+    "enableCodeExecution": false,
+    "enableSearchAsATool": false,
+    "enableBrowseAsATool": false,
+    "thinkingLevel": "THINKING_MINIMAL",
+    "enableImageSearch": false,
+    "enableGoogleMaps": false,
+    "enableAgentThinkingSummariesControl": false,
+    "enableAgentVisualizationControl": false,
+    "enableAgentCollaborativePlanningControl": false,
+    "environmentMode": "new",
+    "enableWordTimestamps": false,
+    "enableSpeakerDiarization": false,
+    "enablePolishedTranscript": false
+  },
+  "systemInstruction": {
+  },
+  "chunkedPrompt": {
+    "chunks": [{
+      "text": "tạo link demo web về \nmôn nhập môn học máy vs thuật toán KNN",
+      "role": "user",
+      "tokenCount": 19,
+      "createTime": "2026-09-24T01:52:40.199Z"
+    }, {
+      "text": "Để tạo một bản demo cho thuật toán **KNN (K-Nearest Neighbors)**, cách tốt nhất là sử dụng **Streamlit** (một thư viện Python cho phép tạo giao diện web cực nhanh cho khoa học dữ liệu).\n\nDưới đây là hướng dẫn chi tiết để bạn tạo một ứng dụng web mô phỏng KNN.\n\n### Bước 1: Chuẩn bị môi trường\nBạn cần cài đặt Python và thư viện cần thiết:\n```bash\npip install streamlit scikit-learn pandas numpy matplotlib\n```\n\n### Bước 2: Tạo file `app.py`\nTạo một file có tên `app.py` và dán đoạn mã sau vào:\n\n```python\nimport streamlit as st\nimport numpy as np\nimport matplotlib.pyplot as plt\nfrom sklearn.neighbors import KNeighborsClassifier\nfrom sklearn.datasets import make_blobs\n\nst.title(\"Demo Thuật toán KNN (K-Nearest Neighbors)\")\n\n# 1. Tạo dữ liệu giả lập\nst.sidebar.header(\"Cấu hình KNN\")\nn_neighbors \u003d st.sidebar.slider(\"Chọn số lượng K (hàng xóm):\", 1, 15, 3)\n\nX, y \u003d make_blobs(n_samples\u003d100, centers\u003d2, random_state\u003d42, cluster_std\u003d2.0)\n\n# 2. Huấn luyện mô hình\nclf \u003d KNeighborsClassifier(n_neighbors\u003dn_neighbors)\nclf.fit(X, y)\n\n# 3. Vẽ biểu đồ\nfig, ax \u003d plt.subplots()\nax.scatter(X[:, 0], X[:, 1], c\u003dy, cmap\u003d\u0027coolwarm\u0027, edgecolors\u003d\u0027k\u0027)\nax.set_title(f\"KNN với K \u003d {n_neighbors}\")\nst.pyplot(fig)\n\n# 4. Dự đoán điểm mới\nst.subheader(\"Dự đoán điểm mới\")\nnew_x \u003d st.slider(\"Tọa độ X\", -10.0, 10.0, 0.0)\nnew_y \u003d st.slider(\"Tọa độ Y\", -10.0, 10.0, 0.0)\n\nprediction \u003d clf.predict([[new_x, new_y]])\nst.write(f\"Điểm ({new_x}, {new_y}) thuộc nhóm: {\u0027Đỏ\u0027 if prediction[0] \u003d\u003d 1 else \u0027Xanh\u0027}\")\n```\n\n### Bước 3: Chạy demo\nMở terminal tại thư mục chứa file `app.py` và chạy lệnh:\n```bash\nstreamlit run app.py\n```\nTrình duyệt sẽ tự động mở trang web demo của bạn.\n\n---\n\n### Bước 4: Cách tạo \"Link Demo\" để gửi cho người khác\nĐể người khác có thể truy cập link web của bạn mà không cần cài đặt gì, bạn hãy làm theo các bước sau:\n\n1. **Đưa code lên GitHub:** Tạo một repo trên GitHub và upload file `app.py` cùng với file `requirements.txt` (nội dung file này chỉ cần ghi: `streamlit`, `scikit-learn`, `matplotlib`).\n2. **Đăng ký tài khoản [Streamlit Cloud](https://share.streamlit.io/):**\n   - Kết nối với tài khoản GitHub của bạn.\n   - Chọn \"New App\".\n   - Chọn repository và file `app.py` bạn vừa upload.\n3. **Nhấn Deploy:** Sau khoảng 1-2 phút, Streamlit sẽ cấp cho bạn một đường link công khai (ví dụ: `https://knn-demo-project.streamlit.app/`).\n\n### Tại sao nên chọn cách này?\n*   **Trực quan:** Người dùng có thể kéo thả thanh trượt để thay đổi giá trị K và xem kết quả thay đổi ngay lập tức.\n*   **Chuyên nghiệp:** Rất phù hợp để nộp bài tập lớn hoặc báo cáo môn học.\n*   **Miễn phí:** Streamlit Cloud hỗ trợ host các project nhỏ hoàn toàn miễn phí.\n\nNếu bạn cần thêm giải thích về code hoặc muốn tùy biến giao diện đẹp hơn, hãy cho mình biết nhé!",
+      "role": "model",
+      "finishReason": "STOP",
+      "tokenCount": 895,
+      "parts": [{
+        "text": "Để tạo"
+      }, {
+        "text": " một bản demo cho thuật toán **KNN (K-Nearest Neighbors)**, cách"
+      }, {
+        "text": " tốt nhất là sử dụng **Streamlit** (một thư viện Python cho phép tạo giao diện web cực nhanh cho khoa học dữ liệu).\n\n"
+      }, {
+        "text": "Dưới đây là hướng dẫn chi tiết để bạn tạo một ứng dụng web mô phỏng KNN.\n\n### Bước 1: Chu"
+      }, {
+        "text": "ẩn bị môi trường\nBạn cần cài đặt Python và thư viện cần thiết:\n```bash\npip install streamlit scikit-learn pandas"
+      }, {
+        "text": " numpy matplotlib\n```\n\n### Bước 2: Tạo file `app.py`\nTạo một file có tên "
+      }, {
+        "text": "`app.py` và dán đoạn mã sau vào:\n\n```python\nimport streamlit as st\nimport numpy as np\nimport"
+      }, {
+        "text": " matplotlib.pyplot as plt\nfrom sklearn.neighbors import KNeighborsClassifier\nfrom sklearn.datasets import make_blobs\n\nst"
+      }, {
+        "text": ".title(\"Demo Thuật toán KNN (K-Nearest Neighbors)\")\n\n# 1. Tạo dữ liệu giả lập\nst.sidebar."
+      }, {
+        "text": "header(\"Cấu hình KNN\")\nn_neighbors \u003d st.sidebar.slider(\"Chọn số lượng K (h"
+      }, {
+        "text": "àng xóm):\", 1, 15, 3)\n\nX, y \u003d make_blobs(n"
+      }, {
+        "text": "_samples\u003d100, centers\u003d2, random_state\u003d42, cluster_std\u003d2.0)"
+      }, {
+        "text": "\n\n# 2. Huấn luyện mô hình\nclf \u003d KNeighborsClassifier(n_neighbors\u003dn_neighbors)\nclf.fit("
+      }, {
+        "text": "X, y)\n\n# 3. Vẽ biểu đồ\nfig, ax \u003d plt.subplots()\nax.scatter("
+      }, {
+        "text": "X[:, 0], X[:, 1], c\u003dy, cmap\u003d\u0027coolwarm\u0027, edgecolors\u003d\u0027k\u0027)\nax.set"
+      }, {
+        "text": "_title(f\"KNN với K \u003d {n_neighbors}\")\nst.pyplot(fig)\n\n# "
+      }, {
+        "text": "4. Dự đoán điểm mới\nst.subheader(\"Dự đoán điểm mới\")\nnew_x \u003d st.slider(\"T"
+      }, {
+        "text": "ọa độ X\", -10.0, 10.0, 0.0)\nnew_"
+      }, {
+        "text": "y \u003d st.slider(\"Tọa độ Y\", -10.0, 10.0, "
+      }, {
+        "text": "0.0)\n\nprediction \u003d clf.predict([[new_x, new_y]])\nst.write(f\"Đi"
+      }, {
+        "text": "ểm ({new_x}, {new_y}) thuộc nhóm: {\u0027Đỏ\u0027 if prediction[0] \u003d\u003d 1"
+      }, {
+        "text": " else \u0027Xanh\u0027}\")\n```\n\n### Bước 3: Chạy demo\nMở terminal tại thư mục chứa"
+      }, {
+        "text": " file `app.py` và chạy lệnh:\n```bash\nstreamlit run app.py\n```\nTrình duyệt sẽ tự"
+      }, {
+        "text": " động mở trang web demo của bạn.\n\n---\n\n### Bước 4: Cách tạo \"Link Demo\" để gửi"
+      }, {
+        "text": " cho người khác\nĐể người khác có thể truy cập link web của bạn mà không cần cài đặt gì, bạn hãy"
+      }, {
+        "text": " làm theo các bước sau:\n\n1. **Đưa code lên GitHub:** Tạo một repo trên GitHub và upload file `app.py"
+      }, {
+        "text": "` cùng với file `requirements.txt` (nội dung file này chỉ cần ghi: `streamlit`, `scikit-learn`,"
+      }, {
+        "text": " `matplotlib`).\n2. **Đăng ký tài khoản [Streamlit Cloud](https://share.streamlit.io/):"
+      }, {
+        "text": "**\n   - Kết nối với tài khoản GitHub của bạn.\n   - Chọn \"New App\".\n   - Chọn repository"
+      }, {
+        "text": " và file `app.py` bạn vừa upload.\n3. **Nhấn Deploy:** Sau khoảng 1-2 phút,"
+      }, {
+        "text": " Streamlit sẽ cấp cho bạn một đường link công khai (ví dụ: `https://knn-demo-project.streamlit.app"
+      }, {
+        "text": "/`).\n\n### Tại sao nên chọn cách này?\n*   **Trực quan:** Người dùng có thể kéo thả thanh trượt"
+      }, {
+        "text": " để thay đổi giá trị K và xem kết quả thay đổi ngay lập tức.\n*   **Chuyên nghiệp:** R"
+      }, {
+        "text": "ất phù hợp để nộp bài tập lớn hoặc báo cáo môn học.\n*   **Miễn phí:** Stream"
+      }, {
+        "text": "lit Cloud hỗ trợ host các project nhỏ hoàn toàn miễn phí.\n\nNếu bạn cần thêm giải thích về code hoặc muốn tùy"
+      }, {
+        "text": " biến giao diện đẹp hơn, hãy cho mình biết nhé!"
+      }, {
+        "text": "",
+        "thoughtSignature": "EnEKbwFpFH0TIJxY6cSzoEXKAs6gJZmxHCxMwFAvQblLbW3eWnwZlJa9xTW00aKBWFIoi5vwB1x5J503KEJXoOjAKh23QBnDeyj/E0YnLFVW8XljhjLKQCq+m3eVj0gzFL0lvd8nu52w173Yj5+j3WH1+Q=="
+      }],
+      "createTime": "2026-09-24T01:52:40.199Z"
+    }],
+    "pendingInputs": [{
+      "text": "",
+      "role": "user"
+    }]
+  }
+}
